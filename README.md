@@ -57,3 +57,9 @@ Test execution time: 0.9730 Seconds
 
 C:\dev\Scratch\IdentityServerAndApi\SecureAPITests>
 ```
+
+## Notes
+
+The app should be running on port 3611 using the checked-in launchSettings.json file. If not, you should adjust it to do so.
+
+If ctrl-F5 in Visual Studio to run the API (IdentityServerHost project) and then when you run the tests it just dies with an "exited with -1" try running both the web server and the tests from two separate command lines, instead.
