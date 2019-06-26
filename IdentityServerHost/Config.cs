@@ -22,7 +22,7 @@ namespace IdentityServerHost
                     $"{BASE_URL}/popup.html",
                     $"{BASE_URL}/silent.html"
                 },
-                PostLogoutRedirectUris = { "http://localhost:5000/index.html" },
+                PostLogoutRedirectUris = { $"{BASE_URL}/index.html" },
                 AllowedScopes = { "openid", "profile", "email", IdentityServerConstants.LocalApi.ScopeName },
                 AllowedCorsOrigins = { BASE_URL }
             },

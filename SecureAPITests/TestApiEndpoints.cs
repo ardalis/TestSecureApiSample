@@ -9,12 +9,12 @@ using Xunit;
 
 namespace SecureAPITests
 {
-    public class UnitTest1
+    public class TestApiEndpoints
     {
         public string IdentityBaseUrl { get; set; } = Config.BASE_URL;
         public string ApiBaseUrl { get; set; } = Config.BASE_URL;
 
-        public UnitTest1()
+        public TestApiEndpoints()
         {
             string identityBaseUrl = Environment.GetEnvironmentVariable("IdentityBaseUrl");
             if (!String.IsNullOrEmpty(identityBaseUrl))
@@ -78,5 +78,18 @@ namespace SecureAPITests
             Assert.Equal("Hello API", result.message);
         }
 
+        [Fact]
+        public async Task GetPublicHealthEndpoint()
+        {
+            var apiClient = new HttpClient();
+
+            var apiResponse = await apiClient.GetAsync($"{ApiBaseUrl}/health");
+
+            Assert.True(apiResponse.IsSuccessStatusCode);
+
+            var stringResponse = await apiResponse.Content.ReadAsStringAsync();
+
+            Assert.Equal("Healthy", stringResponse);
+        }
     }
 }

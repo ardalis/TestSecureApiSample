@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 
 namespace IdentityServerHost
 {
@@ -29,6 +30,9 @@ namespace IdentityServerHost
                 .AddInMemoryApiResources(Config.Apis)
                 .AddTestUsers(TestUsers.Users);
 
+            services.AddHealthChecks()
+                .AddCheck("Simple", () => HealthCheckResult.Healthy("Healthy!"));
+
             services.AddLocalApiAuthentication();
         }
 
@@ -47,7 +51,7 @@ namespace IdentityServerHost
             app.UseStaticFiles();
 
             app.UseIdentityServer();
-
+            app.UseHealthChecks("/health");
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
