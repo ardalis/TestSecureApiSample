@@ -1,7 +1,7 @@
 using IdentityModel.Client;
 using IdentityServer4;
+using IdentityServerHost;
 using Newtonsoft.Json;
-using RestSharp;
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -11,8 +11,8 @@ namespace SecureAPITests
 {
     public class UnitTest1
     {
-        public string IdentityBaseUrl { get; set; } = "http://localhost:5000";
-        public string ApiBaseUrl { get; set; } = "http://localhost:5000";
+        public string IdentityBaseUrl { get; set; } = Config.BASE_URL;
+        public string ApiBaseUrl { get; set; } = Config.BASE_URL;
 
         public UnitTest1()
         {
