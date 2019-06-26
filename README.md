@@ -1,5 +1,7 @@
 # TestSecureApiSample
 
+[![Build Status](https://dev.azure.com/ardalis/TestSecureApiSample/_apis/build/status/ardalis.TestSecureApiSample?branchName=master)](https://dev.azure.com/ardalis/TestSecureApiSample/_build/latest?definitionId=1&branchName=master)
+
 A sample showing how to test a secure API endpoint using xunit, identityserver4, and environment variables.
 
 ## Goals
